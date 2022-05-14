@@ -22,7 +22,8 @@ int main() {
     float numberBFloat;
 
     // input
-    std::cout << "This function calculates the GCF of two numbers, so it only accepts integers." << std::endl;
+    std::cout << "This function calculates the GCF of two numbers,"
+    << " and it only accepts integers." << std::endl;
     std::cout << "Enter the first number: ";
     std::cin >> numberAString;
     std::cout << "Enter the second number: ";
@@ -35,20 +36,24 @@ int main() {
         numberBInteger = std::stoi(numberBString);
         numberAFloat = std::stof(numberAString);
         numberBFloat = std::stof(numberBString);
-        numberA = abs(numberAInteger);
-        numberB = abs(numberBInteger);
-        while (numberA - numberB != 0) {
-            absolute = abs(numberA - numberB);
-            if (numberA > numberB) {
-                numberA = absolute;
-            } else {
-                numberB = absolute;
+        if (numberAInteger == numberAFloat) {
+            numberA = abs(numberAInteger);
+            numberB = abs(numberBInteger);
+            while (numberA - numberB != 0) {
+                absolute = abs(numberA - numberB);
+                if (numberA > numberB) {
+                    numberA = absolute;
+                } else {
+                    numberB = absolute;
+                }
             }
+            greatestCommonFactor = numberA;
+            std::cout << "The Greatest Common Factor of " << numberAInteger
+            << " and " << numberBInteger << " is " << greatestCommonFactor
+            << "." << std::endl;
+        } else {
+            std::cout << "Please put in an integer." << std::endl;
         }
-        greatestCommonFactor = numberA;
-        std::cout << "The Greatest Common Factor of " << numberAInteger
-        << " and " << numberBInteger << " is " << greatestCommonFactor
-        << "." << std::endl;
     } catch (std::invalid_argument) {
         std::cout << "Invalid number!" << std::endl;
     }
